@@ -1,0 +1,140 @@
+.alert.msg-alert {
+    position: absolute;
+    top: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+}
+
+.item-div {
+    displaY: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 85%;
+    height: auto;
+    margin-top: 75px;
+}
+
+.item-div .image-div {
+    width: 40%;
+    height: 100%;
+}
+
+.item-div .listing-image {
+    width: 100%;
+}
+
+.item-div .item-info-div {
+    width: 58%;
+    border: 1px solid #CCCCCC;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+    height: 100%;
+}
+
+.item-div .title-div {
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.item-div .desc-div {
+    font-style: italic;
+    font-size: 14px;
+    margin-top: -5px;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+}
+
+.item-div .user-div {
+    font-size: 14px;
+    color: gray;
+    margin-top: 20px;
+}
+
+.item-div .divider {
+    width: 85%;
+    color: rgb(192, 192, 192);
+    margin: 25px;
+}
+
+.item-div .bid-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-div .bid-price {
+    font-size: 30px;
+}
+
+.item-div .bids-num {
+    margin: -5px 0 30px 0;
+    font-size: 14px;
+}
+
+.item-div .listing-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 225px;
+}
+
+.item-div .bid-input {
+    width: 100%;
+}
+
+.item-div .btn {
+    color: white;
+    height: 40px;
+    width: auto;
+    flex: 0 0 auto;
+    background-color: #27Ae60;
+}
+.item-div button.btn:hover {
+    background-color: #5b9c71;
+}
+
+.item-div .bid-button {
+    width: 50px;
+    height: 40px;
+    margin: 30px 0 0 0;
+}
+
+.item-div .comment-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-div .comment-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10px 0 25px 0;
+}
+
+.item-div .btn.comment-button {
+    position: absolute;
+    right: 0;
+    height: 42px;
+    margin: 4px 1px -2px 0;
+}
+
+.item-div .comment-time {
+    color: rgb(132, 132, 132);
+    font-size: 12px;
+}
+
+.item-div .user-comment {
+    overflow-wrap: break-word;
+    word-break: keep-all;
+}
+
+.item-div .comment {
+    font-size: 14px;;
+}

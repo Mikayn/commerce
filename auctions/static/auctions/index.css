@@ -1,0 +1,78 @@
+.index-heading {
+    font-weight: 600;
+}
+
+.items-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 10px;
+    width: 100%;
+    max-width: 1300px;
+    margin-top: 25px;
+}
+
+.auction-item {
+    display: flex;
+    width: 31%;
+    gap: 5px;
+    box-sizing: border-box;
+    border: 1px solid #DDDDDD;
+    color: inherit;
+    transition: box-shadow 0.2s;
+}
+.auction-item:hover {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15)
+}
+
+.items-list .image-div {
+    flex: 0 0 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items-list .listing-image {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.items-list .info-div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0%;
+    padding-right: 5px;
+}
+
+.items-list .title-div {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.items-list .user-div {
+    font-size: 14px;
+    margin: -7px 0px 5px 0px;
+    color: rgb(90, 89, 89);
+}
+
+.desc-div {
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    text-align: left;
+}
+
+.items-list .desc-div {
+    max-width: 100%;
+    font-size: 14px;
+    height: 48%;
+}
+
+.items-list .bid-div {
+    font-weight: 600;
+    font-size: 18px;
+}

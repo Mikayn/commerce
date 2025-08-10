@@ -1,0 +1,138 @@
+.body-div {
+    display: flex;
+    flex-direction: row;
+    min-height: 85vh;
+    min-width: 90%;
+}
+
+.left-div {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #DFDFDF;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+p, .right-div-content div {
+    font-size: 20px;
+}
+
+.left-div p {
+    color: #888;
+    margin: 5px 0 30px 0;
+}
+
+
+.left-div form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.left-div .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.left-div input {
+    padding: 15px;
+    font-size: 16px;
+    outline: none;
+    background-color: #ffffff;
+    color: #444444;
+}
+.left-div input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border: 1px rgb(202, 202, 202) solid;
+}
+
+.left-div .btn {
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    background-color: #27Ae60;
+}
+
+.left-div .btn:hover {
+    background: #5b9c71;
+}
+
+.right-div {
+    flex: 1;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+}
+
+.right-div::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #27Ae60;
+    z-index: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.right-div-content {
+    position: relative;
+    z-index: 1
+}
+
+.right-div p {
+    margin: 5px 0 5px 0;
+}
+
+.right-div p:last-of-type {
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.right-div .btn {
+    background: #DFDFDF;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 1px solid rgb(185, 185, 185);
+    margin-top: 25px;
+}
+
+button a, button:hover a {
+    color: #444444;;
+}
+
+.right-div .btn:hover {
+    text-decoration: none;
+    background-color: #cbcbcb;
+}

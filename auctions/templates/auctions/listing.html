@@ -1,0 +1,119 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div role="alert" class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{message.tags}} {% endif %}
+                alert-div fade alert-dismissible show msg-alert">
+                {{message}}
+
+                <button class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="item-div">
+        <div class="image-div">
+            <img src="{{listing.image}}" class="listing-image">
+        </div>
+
+        <div class="item-info-div">
+            <div class="title-div">
+                {{listing.title}}
+            </div>
+
+            <div class="desc-div">
+                {{listing.description}}
+            </div>
+
+            <div class="user-div">
+                Auctioned by {{listing.user.username}}
+            </div>
+            
+            <hr class="divider">
+
+            <div class="bid-div">
+                <span class="bid-price"> 
+                    {% if not listing.closed %}
+                        Current Price: <strong> ${{ highest_bid }} </strong> 
+                    {% else %}    
+                        Sold for <strong> ${{ highest_bid }} </strong> 
+                    {% endif %}
+                </span>
+                
+                <span class="bids-num"> {{ bids_num }} bid(s) so far</span>
+                
+                {% if not listing.closed %}
+                    {% if request.user == listing.user %}
+                        <form class="listing-form" method="post"> 
+                            {% csrf_token %}
+                            <button class="btn">
+                                Close Auction
+                            </button>
+                        </form>
+
+                    {% else %}
+                        {% if request.user.is_authenticated %}
+                            <form class="listing-form" method="post">
+                                {% csrf_token %}
+                                {{ bid_form.bid_amount }}
+
+                                <button type="submit" class="btn bid-button">
+                                    Bid
+                                </button>
+                            </form>
+
+                        {% else %}
+                            <div class="text-danger"> 
+                                Login/ Register to bid! 
+                            </div>
+
+                        {% endif %}
+                    {% endif %}
+
+                {% else %}
+                    {% if listing.auction_bids.user == request.user %}
+                        <div class="text-success"> 
+                            Congratulations! You have won the auction! 
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+
+            <hr class="divider">
+            
+            <div class="comments-div">
+                <h3> Comments </h3>
+                <form method="post" class="comment-form"> 
+                    {% csrf_token %}
+                    {{ comment_form.comment }}
+                    
+                    <button class="btn comment-button"> Post </button>
+                </form>
+                
+                <hr class="divider">
+                
+                <h5> What do other people have to say about this? </h5>
+                
+                {% for comment in comments %}
+                <div class="comment-div"> 
+                    <div class="user-time">
+                        <strong> {{ comment.user }} </strong> 
+                        <span class="comment-time"> {{ comment.timestamp }} </span>
+                    </div>
+                    
+                    <div class="comment">
+                        {{ comment.comment }} <!--Make the overall styling better and reduce font of this-->
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

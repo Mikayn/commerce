@@ -1,0 +1,29 @@
+{% extends "auctions/layout2.html" %}
+
+{% block left-div-heading %} Login to your account. {% endblock %}
+
+{% block left-div-subheading %} Enter your username and password. {% endblock %}
+
+{% block form %}
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input autofocus class="form-control inputoverride" type="text" name="username" placeholder="Username">
+            <input class="form-control inputoverride" type="password" name="password" placeholder="Password">
+        </div>
+        <input class="btn" type="submit" value="Login">
+        
+        {% if message %}
+        <div class="alert alert-danger"> {{ message }} </div>
+        {% endif %}
+    </form>
+{% endblock %}
+        
+{% block right-div-heading %} Don't have an account? {% endblock %}
+{% block right-div-subheading %} Sign up to bid and post on auctions! {% endblock %}
+
+{% block register-button %}
+    <button class="btn"> 
+        <a href="{% url 'register' %}" class="nav-link">Register</a> 
+    </button>  
+{% endblock %}

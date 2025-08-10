@@ -1,0 +1,58 @@
+body {
+    background-color: #EFEFEF;
+    color: #444444;
+}
+
+.navbar.header {
+    height: 75px;
+    background-color: #2C3E50;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auctions {
+    margin-right:10px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 600;
+    color: rgb(231, 231, 231); 
+}
+
+nav > a {
+    cursor: default;
+    text-decoration: none;
+}
+
+.heading{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+}
+
+.left-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.left-nav a, .right-nav a {
+    color: rgb(231, 231, 231); 
+}
+.left-nav a:hover, .right-nav a:hover {
+    color: rgb(210, 209, 209); 
+}
+
+.dropdown-menu .dropdown-item, 
+.dropdown-menu .dropdown-item:hover {
+    color: black;
+}
+
+.main-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

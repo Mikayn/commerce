@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<div class="body-div"> 
+
+    <div class="left-div"> 
+        <h1> {% block left-div-heading %} {% endblock %}</h1>
+        <p> {% block left-div-subheading %} {% endblock %}</p>
+        
+        {% block form %}
+        {% endblock %}
+    </div>
+        
+    <div class="right-div"> 
+        <div class="right-div-content">
+            <h1> {% block right-div-heading %} {% endblock %}</h1>
+            <div> {% block right-div-subheading %} {% endblock %} </div>
+            {% block register-button %} {% endblock %} 
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

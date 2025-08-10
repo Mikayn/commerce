@@ -1,0 +1,35 @@
+{% extends "auctions/layout2.html" %}
+
+{% block left-div-heading %} Register an account {% endblock %}
+{% block left-div-subheading %} Sign up to start bidding! {% endblock %}
+
+
+{% block form %}
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <input class="form-control inputoverride" autofocus type="text" name="username" placeholder="Username">
+        <input class="form-control inputoverride" type="email" name="email" placeholder="Email Address">
+        <input class="form-control inputoverride" type="password" name="password" placeholder="Password">
+        <input class="form-control inputoverride" type="password" name="confirmation" placeholder="Confirm Password">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Register">
+    
+    {% if message %}
+        <div class="alert alert-danger"> {{ message }} </div>
+    {% endif %}
+</form>
+
+    <span> Already have an account? <a href="{% url 'login' %}">Log In here.</a> </span>
+{% endblock %}
+
+{% block right-div-heading %}
+    Fun Facts:
+{% endblock %}
+
+{% block right-div-subheading %}
+        <p> 30 items are listed daily! </p> 
+        <p> 24 auctions are closed daily! </p>
+        <p> 47 bids occur daily! </p>
+        <p> Sign up and start auctioning today! </p>
+{% endblock %}
