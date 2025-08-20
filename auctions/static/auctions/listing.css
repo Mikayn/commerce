@@ -118,11 +118,17 @@
     margin: 10px 0 25px 0;
 }
 
-.item-div .btn.comment-button {
-    position: absolute;
-    right: 0;
-    height: 42px;
-    margin: 4px 1px -2px 0;
+.comment-form input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+
+.item-div .comment-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-top: 1px;
+    height: 100%;
 }
 
 .item-div .comment-time {
