@@ -36,10 +36,17 @@
     height: 100%;
 }
 
+.item-div .title-wishlist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .item-div .title-div {
     font-weight: 600;
     font-size: 36px;
 }
+
 
 .item-div .desc-div {
     font-style: italic;
@@ -97,6 +104,10 @@
 }
 .item-div button.btn:hover {
     background-color: #5b9c71;
+}
+
+.item-div .wishlist-button {
+    height: 35px;
 }
 
 .item-div .bid-button {

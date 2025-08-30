@@ -42,3 +42,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.comment}"
+    
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    auction_listing = models.ForeignKey(AuctionListing, on_delete=models.CASCADE, related_name="wishlist_item")
+    added = models.BooleanField(default=False)

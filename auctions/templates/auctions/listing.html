@@ -21,8 +21,18 @@
         </div>
 
         <div class="item-info-div">
-            <div class="title-div">
-                {{listing.title}}
+            <div class="title-wishlist"> 
+                <div class="title-div">
+                    {{listing.title}}
+                </div>
+                {% if not listing.closed and listing.user != request.user %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="form_type" value="wishlist">
+
+                        <button class="btn wishlist-button"> Add to Wishlist </button>
+                    </form>
+                {% endif %}
             </div>
 
             <div class="desc-div">
@@ -50,6 +60,8 @@
                     {% if request.user == listing.user %}
                         <form class="listing-form" method="post"> 
                             {% csrf_token %}
+                            <input type="hidden" name="form_type" value="close_auction">
+
                             <button class="btn">
                                 Close Auction
                             </button>

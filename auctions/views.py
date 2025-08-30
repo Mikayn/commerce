@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from .models import *
@@ -49,7 +49,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("login"))
 
 
 def register(request):
@@ -88,7 +88,7 @@ def CreateAuction(request):
             try:
                 obj = auction_form.save(commit= False)
                 if not obj.image:
-                    obj.image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fno-image-available-sign-vector-id1138179183%3Fk%3D6%26m%3D1138179183%26s%3D612x612%26w%3D0%26h%3DprMYPP9mLRNpTp3XIykjeJJ8oCZRhb2iez6vKs8a8eE%3D&f=1&nofb=1&ipt=66661365c336cc251c77d7b9252e2cebde8b96d368f0061bbfda5d96ed5f485c"
+                    obj.image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fthf.bing.com%2Fth%2Fid%2FOIP.XXWKhZZeWjrUPx-ZSfP0GAHaDt%3Fr%3D0%26cb%3Dthfc1%26pid%3DApi&f=1&ipt=6a327816a3258727d6c03a472e66de42bdceb8299fc75e96b960e22446d7008b&ipo=images"
                     
                 obj.user = request.user
                 
@@ -128,7 +128,6 @@ def listing(request, id):
 
     if listing.auction_bids.all():
         highest_bid = listing.auction_bids.order_by("-bid_amount").first()
-    
     else:
         highest_bid = listing.starting_bid
 
@@ -136,9 +135,26 @@ def listing(request, id):
 
         bid_form = Bids(request.POST)
         comment_form = Comments(request.POST)
+        form_type = request.POST.get ("form_type")
 
+        if form_type == "close_auction":
+            obj = get_object_or_404(AuctionListing, pk = listing.id)
+            obj.closed = True
+            obj.save()
+
+            messages.success (request, "Successfully closed the auction! ")
+            return redirect("listing", id=id)
+        
+        elif form_type == "wishlist":
+            obj = get_object_or_404(Wishlist, pk = listing.id)
+            obj.added = True
+            obj.save()
+
+            messages.success (request, "Successfully added to wishlist! ")
+            return redirect("listing", id= id)
+        
         if bid_form.is_valid():
-            if float(request.POST.get ("bid_amount")) < float(highest_bid):
+            if float(request.POST.get ("bid_amount")) < float(highest_bid.bid_amount):
 
                 messages.error (request, "Your bid cannot be lower than current bid! ")
                 return redirect ("listing", id=id)
@@ -152,7 +168,7 @@ def listing(request, id):
             messages.success (request, "Bid Successful! ")
             return redirect ("listing", id = id)
 
-        if comment_form.is_valid():
+        elif comment_form.is_valid():
             obj = comment_form.save(commit= False)
 
             obj.user = request.user

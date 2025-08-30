@@ -27,3 +27,5 @@ auctions/migrations/__pycache__/0008_auctionlisting_closed.cpython-313.pyc
 auctions/migrations/__pycache__/0009_alter_comment_auction_listing.cpython-313.pyc
 auctions/migrations/__pycache__/0010_alter_comment_timestamp.cpython-313.pyc
 auctions/migrations/__pycache__/0011_alter_bid_timestamp.cpython-313.pyc
+auctions/migrations/__pycache__/0012_wishlist.cpython-313.pyc
+auctions/migrations/0012_wishlist.py
